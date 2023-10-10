@@ -2,14 +2,11 @@ version: '3.8'
 
 services:
   mybb:
-    image: mybb/mybb:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
     volumes:
     - ${PWD}/mybb:/var/www/html:rw
-    - ${PWD}/Upload/api:/var/www/html/api:rw
-    - ${PWD}/Upload/inc/api.php:/var/www/html/inc/api.php:rw
-    - ${PWD}/Upload/inc/plugins/api:/var/www/html/inc/plugins/api:rw
-    - ${PWD}/Upload/api.php:/var/www/html/api.php:rw
-    command: /bin/sh -c "chown -R www-data:www-data /var/www/html"
 
   nginx:
     image: nginx:mainline-alpine
