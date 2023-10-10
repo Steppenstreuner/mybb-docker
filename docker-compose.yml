@@ -19,14 +19,14 @@ services:
     - ${PWD}/nginx:/etc/nginx/conf.d:ro
     - ${PWD}/mybb:/var/www/html:ro
 
-  postgresql:
+  mysql:
     environment:
-      POSTGRES_DB: mybb
-      POSTGRES_PASSWORD: mybbpassword
-      POSTGRES_USER: mybb
-    image: postgres:13.2-alpine
+      MYSQL_DB: mybb
+      MYSQL_PASSWORD: mybbpassword
+      MYSQL_USER: mybb
+    image: mysql:latest
     ports:
-    - published: 5432
-      target: 5432
+    - published: 3306
+      target: 3306
     volumes:
-    - ${PWD}/postgres/data:/var/lib/postgresql/data:rw
+    - ${PWD}/mysql/data:/var/lib/mysql/data:rw
