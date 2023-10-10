@@ -5,10 +5,10 @@ services:
     image: mybb/mybb:latest
     volumes:
     - ${PWD}/mybb:/var/www/html:rw
-    - ${PWD}/mybb/Upload/api:/var/www/html/api:rw
-    - ${PWD}/mybb/Upload/inc/api.php:/var/www/html/inc/:rw
-    - ${PWD}/mybb/Upload/inc/plugins/api:/var/www/html/inc/plugins/api:rw
-    - ${PWD}/mybb/Upload/api.php:/var/www/html/:rw
+    - ${PWD}/Upload/api:/var/www/html/api:rw
+    - ${PWD}/Upload/inc/api.php:/var/www/html/inc/api.php:rw
+    - ${PWD}/Upload/inc/plugins/api:/var/www/html/inc/plugins/api:rw
+    - ${PWD}/Upload/api.php:/var/www/html/api.php:rw
     command: /bin/sh -c "chown -R www-data:www-data /var/www/html"
 
   nginx:
