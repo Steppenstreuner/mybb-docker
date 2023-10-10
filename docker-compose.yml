@@ -24,6 +24,7 @@ services:
       MYSQL_DB: mybb
       MYSQL_PASSWORD: mybbpassword
       MYSQL_USER: mybb
+      MYSQL_ALLOW_EMPTY_PASSWORD: yes
     image: mysql:latest
     ports:
     - published: 3306
