@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  mybb:
+    image: mybb/mybb:latest
+    volumes:
+    - ${PWD}/mybb:/var/www/html:rw
+    - ${PWD}/mybb/Upload/api:/var/www/html/api:rw
+    - ${PWD}/mybb/Upload/inc/api.php:/var/www/html/inc/api.php:rw
+    - ${PWD}/mybb/Upload/inc/plugins/api:/var/www/html/inc/plugins/api:rw
+    - ${PWD}/mybb/Upload/api.php:/var/www/html/api.php:rw
+
+  nginx:
+    image: nginx:mainline-alpine
+    ports:
+    - published: 8090
+      target: 80
+    volumes:
+    - ${PWD}/nginx:/etc/nginx/conf.d:ro
+    - ${PWD}/mybb:/var/www/html:ro
+
+  postgresql:
+    environment:
+      POSTGRES_DB: mybb
+      POSTGRES_PASSWORD: mybbpassword
+      POSTGRES_USER: mybb
+    image: postgres:13.2-alpine
+    ports:
+    - published: 5432
+      target: 5432
+    volumes:
+    - ${PWD}/postgres/data:/var/lib/postgresql/data:rw
