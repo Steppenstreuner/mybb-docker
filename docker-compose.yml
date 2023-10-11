@@ -26,4 +26,4 @@ services:
     - published: 3306
       target: 3306
     volumes:
-    - /var/www/mysql/data:/var/lib/mysql/data:rw
+    - /var/lib/mysql/data:/var/lib/mysql/data:rw
