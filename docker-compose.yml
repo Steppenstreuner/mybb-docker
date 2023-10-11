@@ -15,13 +15,9 @@ services:
     - ${PWD}/nginx:/etc/nginx/conf.d:ro
     - ${PWD}/mybb:/var/www/html:ro
 
-  mysql:
-    environment:
-      MYSQL_DATABASE: mybb
-      MYSQL_ROOT_PASSWORD: mybbpasswordroot
-      MYSQL_USER: mybb
-      MYSQL_PASSWORD: mybbpassword
-    image: mysql:8.0
+  mariadb:
+    image: mariadb:10.4
+    command: "--skip-grant-tables"
     ports:
     - published: 3306
       target: 3306
